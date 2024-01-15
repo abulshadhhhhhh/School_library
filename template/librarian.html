@@ -1,0 +1,200 @@
+<html>
+<head>
+    <title>Bookstore (admin)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<style>
+* {
+	box-sizing: border-box;
+}
+body {
+	font-family: 'Montserrat', sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	min-height: 100vh;
+     backdrop-filter: blur(18px);
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+h2,
+h3,
+a {
+	color: #34495e;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+
+.logo {
+	margin: 0;
+	font-size: 1.45em;
+}
+
+.main-nav {
+	margin-top: 5px;
+
+}
+.logo a,
+.main-nav a {
+	padding: 10px 15px;
+	text-transform: uppercase;
+	text-align: center;
+	display: block;
+}
+
+.main-nav a {
+	color: #34495e;
+	font-size: .99em;
+}
+
+.main-nav a:hover {
+	color: #718daa;
+}
+
+
+
+.header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	border: 1px solid #a2a2a2;
+	background-color: #f4f4f4;
+	-webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+/* =================================
+  Media Queries
+==================================== */
+
+
+
+
+@media (min-width: 769px) {
+	.header,
+	.main-nav {
+		display: flex;
+	}
+	.header {
+		flex-direction: column;
+		align-items: center;
+    	.header{
+		width: 80%;
+		margin: 0 auto;
+		max-width: 1150px;
+	}
+	}
+
+}
+
+@media (min-width: 1025px) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+}
+</style>
+<body>
+
+<!-- ----------------------------------navbar------------------------------------------------>
+
+	<header class="header">
+ 		<h1 class="logo"><a href="#">Librarian</a></h1>
+
+        <ul class="main-nav">
+          <li><a href="history">history</a></li>
+            </ul>
+
+        <ul class="main-nav">
+          <li><a href="logout">Logout</a></li>
+
+
+         </ul>
+	</header>
+
+
+
+
+
+<!---------------------------------------book details table--------------------------------------------------------------------->
+{% block content %}
+
+
+<div class="bg-image"
+     style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlicmFyeSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
+            height:autod">
+
+
+<div class="container">
+ <br><br><br>
+  <input class="form-control" id="myInput" type="text" placeholder="Search Book by Name , Author or Genre" style="width:300px; margin-left:440px;">
+
+
+
+<ul class="main-nav" style="background-color:white;width:110px;height:40px;padding-left:5px;margin-left:1030px;margin-top:0px;margin-bottom:10px;border-radius:5px">
+    <a href="addbook">Add Book</a>
+      </ul>
+  <table class="table table-light table-bordered ">
+    <thead>
+      <tr>
+
+        <th>Image</th>
+        <th>Book</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="myTable">
+    {% for i in data %}
+      <tr>
+        <td><img style="height:130px;width:100px" src="{{i.image.url}}"></td>
+        <td>{{ i.bookname}}</td>
+        <td>{{ i.author}}</td>
+        <td>{{ i.genre}}</td>
+        <td>  &nbsp &nbsp   <a href="editbook/{{i.id}}"><i class="fa-solid fa-pen" style="color: #000000; cursor:pointer"> </i></a>
+         &nbsp &nbsp   <a href="delete/{{i.id}}"><i class="fa-solid fa-trash" style="color: #000000; cursor:pointer"> </i> </a></td>
+      </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+
+
+</div>
+    {% endblock %}
+
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

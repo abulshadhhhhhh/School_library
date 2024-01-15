@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'librarian.html' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+
+</head>
+
+
+{% block content %}
+ <style>
+
+        .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+      width:450px;
+      border-radius:20px;
+      margin-top:10px;
+      margin-left:500px;
+    }
+
+    </style>
+<body>
+<div class="bg-image"
+     style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlicmFyeSUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D&w=1000&q=80');
+            height: 100vh">
+<br>
+    <br>
+    <br>
+ <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form action="addbook" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+
+
+                <br>
+                <br>
+
+              <!-- Username input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example5" name="bookname" class="form-control" placeholder="Book Name"/>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example4" name="author" class="form-control" placeholder="Author Name"/>
+<!--                <label class="form-label" for="form3Example4"> Author</label>-->
+              </div>
+
+                <div class="form-outline mb-4">
+                <input type="text" id="form3Example6" name="genre" class="form-control" placeholder="Genre Type" />
+<!--                <label class="form-label" for="form3Example4"> Genre</label>-->
+              </div>
+
+
+                <div class="form-outline mb-4">
+                <input type="text" id="form3Example62" name="description" class="form-control" placeholder="DESCRIPTION " />
+<!--                <label class="form-label" for="form3Example4"> Genre</label>-->
+              </div>
+
+
+                <div class="form-outline mb-4">
+                <input type="file" id="form3Example65" name="image" class="form-control" />
+<!--                <label class="form-label" for="form3Example4"> Genre</label>-->
+              </div>
+
+
+                <br>
+
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Add Book to Library
+              </button>
+              <br>
+                <ul class="main-nav">
+                <li><a href="librarian">Go Back</a></li>
+                </ul>
+            </form>
+          </div>
+        </div>
+{% endblock %}
+</div>
+</body>
+</html>

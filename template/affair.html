@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>book</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<H1 align="center">BOOK</H1>
+<br>
+<div align="center">
+    <img src="{{data.image.url}}" height="500px;">
+</div>
+<br>
+<div align="center">
+    <h2>{{data.bookname}}</h2>
+    <h3>{{data.author}}</h3>
+    <p>{{data.genre}} </p>
+    <p>{{data.description}}</p>
+</div>
+ <center>
+     <form action="{% url 'getbook' %}" method="post">
+         {% csrf_token %}
+         <input type="hidden" value="{{data.id}}" name="bookid">
+     <button type="submit" class="btn btn-info">RENT NOW</button><br><br>
+         </form>
+ </center>
+</body>
+</html>

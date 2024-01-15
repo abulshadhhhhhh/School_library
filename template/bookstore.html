@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          <link rel="stylesheet" href="{% static 'css/bookstore.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Bookstore Search Bar</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg dark bg-dark">
+  <a style="color:white"  class="navbar-brand" href="#">Babel Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item active">
+        <a style="color:white" class="nav-link " >{{user.username}}</a>
+      </li>
+      <li class="nav-item active">
+        <a style="color:white" class="nav-link " href="userhistory" data-toggle="tooltip" data-placement="top" title="history"><i class="fa-solid fa-clock-rotate-left"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a style="color:white" class="nav-link " href="editprofileview" data-toggle="tooltip" data-placement="top" title="Edit profile"><i class="fa-solid fa-user-pen" style="color: #ffffff;"></i></a>
+      </li>
+      <li class="nav-item active">
+        <a style="color:white" class="nav-link " href="changepassword" data-toggle="tooltip" data-placement="top" title="Change password"><i class="fa-solid fa-key" style="color: #ffffff;"></i></a>
+      </li>
+      <li class="nav-item">
+        <a style="color:white"  class="nav-link" href="{% url 'logout' %}"  data-toggle="tooltip" data-placement="top" title="log out"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></a>
+      </li>
+
+
+    </ul>
+
+  </div>
+</nav>
+
+  <section id="main">
+
+
+    <div class="container-fuild">
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="h1 text-center">Babel Library</h1><br>
+          <form action="{% url 'search' %}" method="get">
+            {% csrf_token %}
+            <input style="margin-left:42%" type="text" placeholder="search books" name="search">
+            <button>
+              <i class="fa fa-search"
+                 style="font-size:16px;">
+                 </i>
+            </button>
+          </form>
+<!--          <input class="form-control" id="myInput" type="text" placeholder="Search Book by Name , Author or Genre" style="width:300px; margin-left:600px">-->
+          <!-- Filter buttons -->
+<!--          <div id="myBtnContainer" class="col-md-12">-->
+<!--            <button class="btn active" onclick="filterSelection('all')"> Show all</button>-->
+<!--            <button class="btn" onclick="filterSelection('fantasy')"> Fantasy</button>-->
+<!--&lt;!&ndash;            <button class="btn" onclick="filterSelection('romance')"> Romance</button>&ndash;&gt;-->
+<!--&lt;!&ndash;            <button class="btn" onclick="filterSelection('autoBiograpghy')"> Auto-Biography</button>&ndash;&gt;-->
+<!--            <button class="btn" onclick="filterSelection('crimeDrama')"> Crime-Drama</button>-->
+<!--            <button class="btn" onclick="filterSelection('history')"> History</button>-->
+<!--            <button class="btn" onclick="filterSelection('fiction')"> Fiction</button>-->
+<!--            <button class="btn" onclick="filterSelection('childFiction')"> Children's Fiction</button>-->
+<!--            <button class="btn" onclick="filterSelection('nonFiction')"> Non-Fiction</button>-->
+<!--            <button class="btn" onclick="filterSelection('thriller')"> Thriller</button>-->
+<!--&lt;!&ndash;            <button class="btn" onclick="filterSelection('mystery')"> Mystery</button>&ndash;&gt;-->
+<!--            <button class="btn" onclick="filterSelection('play')"> Play</button>-->
+<!--&lt;!&ndash;            <button class="btn" onclick="filterSelection('memoir')"> Memoir</button>&ndash;&gt;-->
+<!--            <button class="btn" onclick="filterSelection('novel')"> Novel</button>-->
+<!--            <button class="btn" onclick="filterSelection('critique')"> Critique</button>-->
+<!--          </div>-->
+
+
+          <!--Dropdown filter-->
+<!--          <div class="dropdown">-->
+<!--            <button class="dropbtn">Dropdown</button>-->
+<!--            <div class="dropdown-content">-->
+<!--              <a onclick="filterSelection('all')"> Show all</a>-->
+<!--              <a onclick="filterSelection('fantasy')"> Fantasy</a>-->
+<!--&lt;!&ndash;              <a onclick="filterSelection('romance')"> Romance</a>&ndash;&gt;-->
+<!--&lt;!&ndash;              <a onclick="filterSelection('autoBiograpghy')"> Auto-Biography</a>&ndash;&gt;-->
+<!--              <a onclick="filterSelection('crimeDrama')"> Crime-Drama</a>-->
+<!--              <a onclick="filterSelection('history')"> History</a>-->
+<!--              <a onclick="filterSelection('childFiction')"> Children's Fiction</a>-->
+<!--              <a onclick="filterSelection('nonFiction')"> Non-Fiction</a>-->
+<!--              <a onclick="filterSelection('thriller')"> Thriller</a>-->
+<!--&lt;!&ndash;              <a onclick="filterSelection('mystery')"> Mystery</a>&ndash;&gt;-->
+<!--              <a onclick="filterSelection('play')"> Play</a>-->
+<!--&lt;!&ndash;              <a onclick="filterSelection('memoir')"> Memoir</a>&ndash;&gt;-->
+<!--              <a onclick="filterSelection('novel')"> Novel</a>-->
+<!--              <a onclick="filterSelection('critique')"> Critique</a>-->
+<!--            </div>-->
+<!--          </div>-->
+          <br>
+
+          <div id="book-shelf" class="row row-eq-height">
+            {% if data1 %}
+                {% for i in data1 %}
+            <article class="col-md-3 col-sm-6 filterDiv crimeDrama thriller novel">
+
+              <a href="affairview/{{i.id}}"><img src="{{i.image.url}}"/></a>
+              <p class="text-center">{{i.bookname}}
+<!--                <br>-->
+<!--                <em>James Patterson</em><br>-->
+<!--                <a href="affairview">More</a>-->
+              </p>
+            </article>
+                {% endfor %}
+            {% elif data %}
+                {% for i in data %}
+                <article class="col-md-3 col-sm-6 filterDiv crimeDrama thriller novel">
+
+                  <a href="affairview/{{i.id}}"><img src="{{i.image.url}}"/></a>
+                  <p class="text-center">{{i.bookname}}
+    <!--                <br>-->
+    <!--                <em>James Patterson</em><br>-->
+    <!--                <a href="affairview">More</a>-->
+                  </p>
+                </article>
+                {% endfor %}
+            {% endif %}
+          </div>
+<!--            <article class="col-md-3 col-sm-6 filterDiv fiction novel">-->
+<!--              <a href="fallview"><img src="https://books.google.co.in/books/publisher/content?id=Ol_kCgAAQBAJ&pg=PP1&img=1&zoom=3&hl=en&bul=1&sig=ACfU3U3koxvoj7r0hXJkDC6hdUgBfRKrmg&w=1280"/></a>-->
+<!--              <p class="text-center">Before the Fall-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>Noah Hawley</em><br><a href="fallview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv childFiction novel">-->
+<!--             <a href="dairyview"> <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649214/bc-diary_of_a_wimpy_kid_odilob.jpg"/></a>-->
+<!--              <p class="text-center">Diary of a Wimpy Kid: Double Down-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>Jeff Kinney</em><br><a href="dairyview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv childFiction fantasy play">-->
+<!--              <a href="harrypotterview"> <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649183/bc-harry_potter_pwzilg.jpg"/></a>-->
+<!--              <p class="text-center">Harry Potter and the Cursed Child, Parts 1 & 2-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>J.K. Rowling</em><br><a href="harrypotterview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv nonFiction critique">-->
+<!--             <a href="hillbillyview"><img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649182/bc-hillbilly_elegy_ipelvr.jpg"/></a>-->
+<!--              <p class="text-center">Hillbilly Elegy: A Memoir of a Family and Culture in Crisis-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>J.D. Vance</em><br><a href="hillbillyview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv history critique">-->
+<!--              <a href="killingview"> <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649169/bc-killing_the_rising_sun_qw2dcx.jpg"/></a>-->
+<!--              <p class="text-center">Killing the Rising Sun: How America Vanquished World War II Japan-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>Bill O'Reilly</em><br><a href="killingview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv thriller novel">-->
+<!--            <a href="blackwidowview"> <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649174/bc-the_black_widow_esmzpi.jpg"/></a>-->
+<!--              <p class="text-center">The Black Widow-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>Daniel Silva</em><br><a href="blackwidowview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv fiction novel">-->
+<!--            <a href="nightschoolview"> <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649205/bc-the_jack_reacher_thriller_xwdyi7.jpg"/></a>-->
+<!--              <p class="text-center">Night School: A Jack Reacher Novel-->
+<!--                <br>-->
+<!--&lt;!&ndash;                <em>Lee Child</em><br><a href="nightschoolview">More</a>&ndash;&gt;-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv crimeDrama novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649196/bc-the_last_mile_fqj7tu.jpg"/>-->
+<!--              <p class="text-center">The Last Mile-->
+<!--                <br>-->
+<!--                <em>David Baldacci</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv crimeDrama novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649194/bc-the_whistler_ofw7y6.jpg"/>-->
+<!--              <p class="text-center">The Whistler-->
+<!--                <br>-->
+<!--                <em>John Grisham</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv fiction novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649201/bc-truly_madly_guilty_zlsdzb.jpg"/>-->
+<!--              <p class="text-center">Truly Madly Guilty-->
+<!--                <br>-->
+<!--                <em>Liane Moriarty</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv autoBiograpghy memoir">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649191/bc-when_breath_becomes_air_gi50fe.jpg"/>-->
+<!--              <p class="text-center">When Breath Becomes Air-->
+<!--                <br>-->
+<!--                <em>Paul Kalanithi</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv crimeDrama thriller novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649187/bc-fool_me_once_mcfhvf.jpg"/>-->
+<!--              <p class="text-center">Fool Me Once-->
+<!--                <br>-->
+<!--                <em>Harlan Coben</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv autoBiograpghy history memoir">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649167/bc-crisis_of_character_zubxes.jpg"/>-->
+<!--              <p class="text-center">Crisis of Character-->
+<!--                <br>-->
+<!--                <em>Gary. J Byrne</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv crimeDrama thriller novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649169/bc-wrong_side_of_goodbye_ey7p5w.jpg"/>-->
+<!--              <p class="text-center">The Wrong Side of Goodbye-->
+<!--                <br>-->
+<!--                <em>Michael Connelly</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv autoBiograpghy romance memoir ">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649186/bc-magnolia_story_txiz5r.jpg"/>-->
+<!--              <p class="text-center">The Magnolia Story-->
+<!--                <br>-->
+<!--                <em>Chip and Joanna Gaines</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv fiction novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649188/bc-the_nest_dp5xhm.jpg"/>-->
+<!--              <p class="text-center">The Nest-->
+<!--                <br>-->
+<!--                <em>Cynthia D'Aprix Sweeney</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv romance fiction novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649185/bc-one_with_you_qurgwu.jpg"/>-->
+<!--              <p class="text-center">One With You: A Crossfire Novel-->
+<!--                <br>-->
+<!--                <em>Sylvia Day</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv crimeDrama thriller novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649174/bc-the_obsession_wbnqtf.jpg"/>-->
+<!--              <p class="text-center">The Obsession-->
+<!--                <br>-->
+<!--                <em>Nora Roberts</em>-->
+<!--              </p>-->
+<!--            </article>-->
+<!--            <article class="col-md-3 col-sm-6 filterDiv mystery novel">-->
+<!--              <img src="http://res.cloudinary.com/dtj4lxtyr/image/upload/v1519649212/bc-everything_we_keep_cid3l9.png"/>-->
+<!--              <p class="text-center">Everything We Keep-->
+<!--                <br>-->
+<!--                <em>Kerry Lonsdale</em>-->
+<!--              </p>-->
+<!--            </article>-->
+          </form>
+          </div>
+        </div>
+        </div>
+  </section>
+
+
+ <script src="{% static 'js/bookstore.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

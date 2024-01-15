@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          <link rel="stylesheet" href="{% static 'css/bookstore.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Bookstore Search Bar</title>
+    <style>
+
+    body{
+    background: url(https://images.alphacoders.com/132/1326370.png) no-repeat;
+
+
+    }
+        .sub-main-w3 form {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top:140px;
+    background: transparent;
+    backdrop-filter:blur(25px);
+    border-radius:25px;
+    padding: 3.5vw;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 13px 2px rgba(251, 251, 251, 0.09);
+    position: relative;
+    /* display: table; */
+}
+
+p.legend {
+    color: #fff;
+    font-size: 28px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-style: italic;
+    margin-bottom: 1.2em;
+}
+
+p.legend span {
+    color: #fff;
+    margin-left: 10px;
+}
+
+.input {
+    position: relative;
+    margin: 20px auto;
+    width: 100%
+}
+
+.input span {
+    position: absolute;
+    display: block;
+    color: #f13f57;
+    left: 10px;
+    top: 12px;
+    font-size: 18px;
+}
+
+.input input {
+    width: 100%;
+    padding: 13px 5px 13px 40px;
+    display: block;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+    transition: 0.2s ease-out;
+    color: #000;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+    letter-spacing: 1px;
+}
+
+.submit {
+    width: 45px;
+    height: 45px;
+    display: block;
+    margin: 2em auto 0;
+    background: rgba(12, 10, 10, 0.2);
+    border-radius: 10px;
+    border: none;
+    color: #f13f57;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px 4px #fff;
+    transition: 0.2s ease-out;
+}
+
+.submit:hover,
+.submit:focus {
+    background: #f13f57;
+    color: #fff;
+}
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg dark bg-dark">
+  <a style="color:white"  class="navbar-brand" href="#">Babel Library</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto ">
+
+<!--        <li class="nav-item active">-->
+<!--        <a style="color:white" class="nav-link " href="#"><i class="fa-solid fa-user" style="color: #ffffff;"></i></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item active">-->
+<!--        <a style="color:white" class="nav-link " href="changepassword"><i class="fa-solid fa-key" style="color: #ffffff;"></i></a>-->
+<!--      </li>-->
+<!--      <li class="nav-item">-->
+<!--        <a style="color:white"  class="nav-link" href="#"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i></a>-->
+<!--      </li>-->
+
+
+    </ul>
+
+  </div>
+</nav>
+
+
+<!--form-->
+
+<div class="sub-main-w3">
+		<form class="login" action="#" method="post">
+            {% csrf_token %}
+			<p class="legend">Profile Updated Successfully<span class="fa fa-hand-o-down"></span></p>
+             <button><a href="bookstore">Go Back</a></button>
+		</form>
+	</div>
+
+ <script src="{% static 'js/bookstore.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
